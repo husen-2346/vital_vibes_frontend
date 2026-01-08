@@ -1,0 +1,231 @@
+/* =========================
+   GLOBAL ADMIN BASE
+========================= */
+body {
+  background-color: #eef3f9;
+}
+
+/* =========================
+   ADMIN LOGIN PAGE
+========================= */
+.admin-login-page {
+  height: 100vh;
+  background: linear-gradient(
+    to right,
+    #dbe7f3,
+    #eef3f9
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-logo {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #0f5fa8;
+  margin-bottom: 1.5rem;
+}
+
+.admin-login-page h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #0f2f44;
+  margin-bottom: 2.5rem;
+}
+
+/* Login Card */
+.admin-login-form {
+  width: 36rem;
+  background: #ffffff;
+  padding: 3.5rem;
+  border-radius: 1.6rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Inputs */
+.admin-login-form input {
+  width: 100%;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 2rem;
+  border: none;
+  border-radius: 0.8rem;
+  background-color: #eef3f9;
+  font-size: 1.5rem;
+}
+
+.admin-login-form input:focus {
+  outline: 2px solid #0f5fa8;
+}
+
+/* Button */
+.admin-login-form button {
+  width: 100%;
+  padding: 1.4rem;
+  background: #0f5fa8;
+  color: #ffffff;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+}
+
+.admin-login-form button:hover {
+  background: #0b4c87;
+}
+
+/* =========================
+   ADMIN NAVBAR
+========================= */
+.admin-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  background: #ffffff;
+  border-bottom: 1px solid #dbe3ef;
+}
+
+.admin-navbar h3 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0f5fa8;
+}
+
+.admin-navbar button {
+  background: #0f5fa8;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1.4rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+
+.admin-navbar button:hover {
+  background: #0b4c87;
+}
+
+/* =========================
+   ADMIN DASHBOARD
+========================= */
+.admin-content {
+  padding: 4.5rem;
+}
+
+.admin-content h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0f2f44;
+  margin-bottom: 3rem;
+}
+
+/* =========================
+   STATS CARDS
+========================= */
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-bottom: 4.5rem;
+}
+
+.stat-card {
+  background: #ffffff;
+  padding: 3.5rem;
+  border-radius: 1.6rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.stat-card p {
+  font-size: 1.5rem;
+  color: #5a6b85;
+  margin-bottom: 1.2rem;
+}
+
+.stat-card h3 {
+  font-size: 3.4rem;
+  font-weight: 800;
+  color: #0f5fa8;
+}
+
+/* =========================
+   APPOINTMENT TABLE
+========================= */
+.appointment-table {
+  background: #ffffff;
+  padding: 3.5rem;
+  border-radius: 1.6rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.appointment-table h3 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #0f2f44;
+  margin-bottom: 2.5rem;
+}
+
+.appointment-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.appointment-table th {
+  text-align: left;
+  font-size: 1.5rem;
+  color: #5a6b85;
+  padding-bottom: 1.5rem;
+}
+
+.appointment-table td {
+  padding: 1.6rem 0;
+  font-size: 1.5rem;
+  color: #0f2f44;
+  border-bottom: 1px solid #eef3f9;
+}
+
+/* Action Button */
+.appointment-table button {
+  background: #0f5fa8;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.6rem;
+  font-size: 1.4rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+
+.appointment-table button:hover {
+  background: #0b4c87;
+}
+
+.completed {
+  color: #2e7d32;
+  font-weight: 700;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .admin-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-content {
+    padding: 3rem;
+  }
+}
+/* Logo */
+.admin-logo {
+  width: 70px;
+  margin-bottom: 2rem;
+}
+
+.admin-nav-logo {
+  width: 100px;
+}
