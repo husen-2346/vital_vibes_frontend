@@ -216,7 +216,7 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .admin-content {
+.admin-content {
     padding: 3rem;
   }
 }

@@ -1,80 +1,67 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const Appointment = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    date: "",
-    time: "",
-    message: ""
-  });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
-  const handleSubmit = async (e) => {
+const Appointments = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [date, setDate] = useState("");
+  const [message, setMessage] = useState("");
+
+  const submitAppointment = async (e) => {
     e.preventDefault();
+    console.log("🔥 FRONTEND SUBMIT CLICKED");
 
-    const res = await fetch("http://localhost:5000/api/appointments", {
+    await fetch("http://localhost:5000/appointments", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData)
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        date,
+        message
+      })
     });
 
-    const data = await res.json();
-    alert(data.message);
+    setName("");
+    setEmail("");
+    setDate("");
+    setMessage("");
+
+    alert("Appointment submitted");
   };
 
   return (
-    <section className="appointment" id="appointment">
-      <div className="container">
-        <h2 className="section-title">Book an Appointment</h2>
+    <form onSubmit={submitAppointment}>
+      <input
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
 
-        <form className="appointment-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Full Name"
-            onChange={handleChange}
-            required
-          />
+      <input
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
 
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Mobile Number"
-            onChange={handleChange}
-            required
-          />
+      <input
+        type="date"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+      />
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            onChange={handleChange}
-            required
-          />
+      <textarea
+        placeholder="Message"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
 
-          <div className="form-row">
-            <input type="date" name="date" onChange={handleChange} required />
-            <input type="time" name="time" onChange={handleChange} required />
-          </div>
-
-          <textarea
-            name="message"
-            placeholder="Describe your problem (optional)"
-            onChange={handleChange}
-          ></textarea>
-
-          <button type="submit" className="appointment-btn">
-            Submit
-          </button>
-        </form>
-      </div>
-    </section>
+      <button type="submit">Book Appointment</button>
+    </form>
   );
 };
 
-export default Appointment;
+export default Appointments;
