@@ -632,6 +632,15 @@ body {
 .appointment-form button:hover {
   background-color: #0b4c87;
 }
+.confirmation-message {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e8f5e9;
+  border: 1px solid #2e7d32;
+  border-radius: 6px;
+  color: #2e7d32;
+  text-align: center;
+}
 
 /* =======================
    MOBILE

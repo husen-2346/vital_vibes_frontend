@@ -8,73 +8,83 @@ body {
 /* =========================
    ADMIN LOGIN PAGE
 ========================= */
+/* ===== Admin Login Page ===== */
+
 .admin-login-page {
-  height: 100vh;
-  background: linear-gradient(
-    to right,
-    #dbe7f3,
-    #eef3f9
-  );
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  padding: 20px;
 }
 
-.admin-logo {
-  font-size: 2.4rem;
-  font-weight: 800;
-  color: #0f5fa8;
-  margin-bottom: 1.5rem;
-}
-
-.admin-login-page h2 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: #0f2f44;
-  margin-bottom: 2.5rem;
-}
-
-/* Login Card */
 .admin-login-form {
-  width: 36rem;
-  background: #ffffff;
-  padding: 3.5rem;
-  border-radius: 1.6rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 380px;
+  padding: 32px;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-login-form h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #1e293b;
 }
 
 /* Inputs */
 .admin-login-form input {
-  width: 100%;
-  padding: 1.4rem 1.6rem;
-  margin-bottom: 2rem;
-  border: none;
-  border-radius: 0.8rem;
-  background-color: #eef3f9;
-  font-size: 1.5rem;
+  padding: 12px 14px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #cbd5f5;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .admin-login-form input:focus {
-  outline: 2px solid #0f5fa8;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 /* Button */
 .admin-login-form button {
-  width: 100%;
-  padding: 1.4rem;
-  background: #0f5fa8;
-  color: #ffffff;
-  font-size: 1.6rem;
+  margin-top: 8px;
+  padding: 12px;
+  font-size: 15px;
   font-weight: 600;
   border: none;
-  border-radius: 0.8rem;
+  border-radius: 8px;
+  background-color: #4f46e5;
+  color: #ffffff;
   cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
 .admin-login-form button:hover {
-  background: #0b4c87;
+  background-color: #4338ca;
 }
+
+.admin-login-form button:active {
+  transform: scale(0.98);
+}
+
+/* Error */
+.login-error {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+}
+
 
 /* =========================
    ADMIN NAVBAR
@@ -155,70 +165,65 @@ body {
 /* =========================
    APPOINTMENT TABLE
 ========================= */
+/* ===== Appointment Table ===== */
+
 .appointment-table {
-  background: #ffffff;
-  padding: 3.5rem;
-  border-radius: 1.6rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-}
-
-.appointment-table h3 {
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: #0f2f44;
-  margin-bottom: 2.5rem;
-}
-
-.appointment-table table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 24px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden; /* keeps rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-size: 15px;
+}
+
+/* Table Header */
+.appointment-table thead {
+  background-color: #1e293b; /* dark blue-gray */
 }
 
 .appointment-table th {
+  padding: 14px 16px;
   text-align: left;
-  font-size: 1.5rem;
-  color: #5a6b85;
-  padding-bottom: 1.5rem;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
 }
 
+/* Table Body */
 .appointment-table td {
-  padding: 1.6rem 0;
-  font-size: 1.5rem;
-  color: #0f2f44;
-  border-bottom: 1px solid #eef3f9;
+  padding: 14px 16px;
+  color: #334155;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: top;
 }
 
-/* Action Button */
-.appointment-table button {
-  background: #0f5fa8;
-  color: white;
-  border: none;
-  padding: 0.6rem 1.6rem;
-  font-size: 1.4rem;
-  border-radius: 0.6rem;
-  cursor: pointer;
+/* Zebra rows */
+.appointment-table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
 }
 
-.appointment-table button:hover {
-  background: #0b4c87;
+/* Hover effect */
+.appointment-table tbody tr:hover {
+  background-color: #eef2ff;
+  transition: background-color 0.2s ease-in-out;
 }
 
-.completed {
-  color: #2e7d32;
-  font-weight: 700;
+/* Message column readability */
+.appointment-table td:last-child {
+  max-width: 300px;
+  line-height: 1.5;
+  color: #475569;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 900px) {
-  .admin-stats {
-    grid-template-columns: 1fr;
-  }
-
-.admin-content {
-    padding: 3rem;
-  }
+/* Empty state (if you add later) */
+.appointment-table-empty {
+  text-align: center;
+  padding: 30px;
+  color: #64748b;
+  font-size: 16px;
 }
 /* Logo */
 .admin-logo {

@@ -1,31 +1,71 @@
-import React from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./admin.css";
-import logo from "../assets/vv_logo.png";
 
 const AdminLogin = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setError("");
 
-    // 🔐 Later: verify credentials from backend
-    navigate("/admin/dashboard");
+    console.log("🔥 LOGIN CLICKED");
+    console.log("SENDING:", { username, password });
+
+    try {
+      const res = await fetch("http://localhost:5000/admin/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username, password })
+      });
+
+      console.log("🔥 RESPONSE STATUS:", res.status);
+
+      const data = await res.json();
+      console.log("🔥 RESPONSE DATA:", data);
+
+      if (!res.ok) {
+        setError(data.message || "Invalid username or password");
+        return;
+      }
+
+      // ✅ SUCCESS
+      navigate("/admin/dashboard");
+    } catch (err) {
+      console.error("❌ NETWORK ERROR:", err);
+      setError("Backend server is down");
+    }
   };
 
   return (
-    <div className="admin-login-page">
-      <img src={logo} alt="Vital Vibes Logo" className="admin-logo" />
+  <div className="admin-login-page">
+    <form className="admin-login-form" onSubmit={handleLogin}>
+      <h2>Admin Login</h2>
 
-      <h2>ADMIN LOGIN</h2>
+      {error && <p className="login-error">{error}</p>}
 
-      <form className="admin-login-form" onSubmit={handleLogin}>
-        <input type="text" placeholder="Username" required />
-        <input type="password" placeholder="Password" required />
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  );
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+);
 };
 
 export default AdminLogin;

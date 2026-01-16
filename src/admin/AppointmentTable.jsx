@@ -5,15 +5,12 @@ const AppointmentTable = () => {
 
   useEffect(() => {
     fetch("http://localhost:5000/appointments")
-      .then(res => res.json())
-      .then(data => {
-        console.log("ADMIN DATA:", data);
-        setAppointments(data);
-      });
+      .then((res) => res.json())
+      .then((data) => setAppointments(data));
   }, []);
 
   return (
-    <table border="1">
+    <table className="appointment-table">
       <thead>
         <tr>
           <th>Name</th>
