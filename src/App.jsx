@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 
-import Appointments from "./components/Appointments";
+import Home from "./pages/Home";
 import AdminLogin from "./admin/AdminLogin";
 import AdminDashboard from "./admin/AdminDashboard";
 
 function App() {
   return (
     <Routes>
-      {/* User */}
-      <Route path="/" element={<Appointments />} />
+      {/* Public site */}
+      <Route path="/" element={<Home />} />
 
       {/* Admin */}
       <Route path="/admin/login" element={<AdminLogin />} />
