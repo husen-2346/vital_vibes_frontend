@@ -40,10 +40,35 @@ const Appointments = () => {
       <form className="appointment-form" onSubmit={submitAppointment}>
         <h2>Book Appointment</h2>
 
-        <input value={name} onChange={(e) => setName(e.target.value)} required />
-        <input value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
-        <textarea value={message} onChange={(e) => setMessage(e.target.value)} />
+        <input
+          type="text"
+          placeholder="Your Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+
+        <input
+          type="email"
+          placeholder="Your Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+
+        <input
+          type="date"
+          placeholder="Preferred Appointment Date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          required
+        />
+
+        <textarea
+          placeholder="Your contact number and your disease"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
 
         <button type="submit">Submit</button>
 
