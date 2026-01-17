@@ -1,97 +1,57 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import "./admin.css";
 
-const Appointments = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [date, setDate] = useState("");
-  const [message, setMessage] = useState("");
+const AppointmentTable = () => {
+  const [appointments, setAppointments] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState("");
+  useEffect(() => {
+    fetch("https://vital-vibes-backend.onrender.com/appointments")
+      .then((res) => res.json())
+      .then((data) => {
+        setAppointments(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch appointments:", err);
+        setLoading(false);
+      });
+  }, []);
 
-  const submitAppointment = async (e) => {
-    e.preventDefault();
-    setError("");
-    setSuccess(false);
-    setLoading(true);
-
-    try {
-      const res = await fetch(
-        "https://vital-vibes-backend.onrender.com/appointments",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ name, email, date, message })
-        }
-      );
-
-      if (!res.ok) {
-        throw new Error("Submit failed");
-      }
-
-      // ✅ clear form
-      setName("");
-      setEmail("");
-      setDate("");
-      setMessage("");
-
-      // ✅ show success message
-      setSuccess(true);
-    } catch (err) {
-      console.error(err);
-      setError("❌ Failed to submit appointment. Try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  if (loading) {
+    return <p>Loading appointments...</p>;
+  }
 
   return (
-    <div className="appointment">
-      <form className="appointment-form" onSubmit={submitAppointment}>
-        <h2>Book Appointment</h2>
-
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          required
-        />
-
-        <textarea
-          placeholder="Message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-
-        <button type="submit" disabled={loading}>
-          {loading ? "Submitting..." : "Submit"}
-        </button>
-
-        {/* ✅ Messages */}
-        {success && <p className="success-msg">✅ Submitted successfully!</p>}
-        {error && <p className="error-msg">{error}</p>}
-      </form>
+    <div className="appointment-table-wrapper">
+      <table className="appointment-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          {appointments.length === 0 ? (
+            <tr>
+              <td colSpan="4">No appointments found</td>
+            </tr>
+          ) : (
+            appointments.map((a) => (
+              <tr key={a._id}>
+                <td>{a.name}</td>
+                <td>{a.email}</td>
+                <td>{a.date}</td>
+                <td>{a.message}</td>
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default Appointments;
+export default AppointmentTable;
