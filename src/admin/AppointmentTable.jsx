@@ -5,12 +5,15 @@ const Appointments = () => {
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
   const [message, setMessage] = useState("");
+
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   const submitAppointment = async (e) => {
     e.preventDefault();
-    setSuccess("");
+    setError("");
+    setSuccess(false);
     setLoading(true);
 
     try {
@@ -21,28 +24,25 @@ const Appointments = () => {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({
-            name,
-            email,
-            date,
-            message
-          })
+          body: JSON.stringify({ name, email, date, message })
         }
       );
 
       if (!res.ok) {
-        throw new Error("Failed to submit appointment");
+        throw new Error("Submit failed");
       }
 
-      // ✅ success
+      // ✅ clear form
       setName("");
       setEmail("");
       setDate("");
       setMessage("");
-      setSuccess("✅ Appointment submitted successfully!");
+
+      // ✅ show success message
+      setSuccess(true);
     } catch (err) {
       console.error(err);
-      setSuccess("❌ Failed to submit appointment. Please try again.");
+      setError("❌ Failed to submit appointment. Try again.");
     } finally {
       setLoading(false);
     }
@@ -51,7 +51,7 @@ const Appointments = () => {
   return (
     <div className="appointment">
       <form className="appointment-form" onSubmit={submitAppointment}>
-        <h2>Book an Appointment</h2>
+        <h2>Book Appointment</h2>
 
         <input
           type="text"
@@ -83,10 +83,12 @@ const Appointments = () => {
         />
 
         <button type="submit" disabled={loading}>
-          {loading ? "Submitting..." : "Book Appointment"}
+          {loading ? "Submitting..." : "Submit"}
         </button>
 
-        {success && <p className="appointment-message">{success}</p>}
+        {/* ✅ Messages */}
+        {success && <p className="success-msg">✅ Submitted successfully!</p>}
+        {error && <p className="error-msg">{error}</p>}
       </form>
     </div>
   );

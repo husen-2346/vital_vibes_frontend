@@ -862,3 +862,20 @@ body {
 .footer img{
   height: 50px;
 }
+
+.success-msg {
+  margin-top: 10px;
+  color: green;
+  font-weight: 600;
+}
+
+.error-msg {
+  margin-top: 10px;
+  color: red;
+  font-weight: 600;
+}
+
+.appointment-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

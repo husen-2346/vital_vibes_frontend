@@ -5,77 +5,50 @@ const Appointments = () => {
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
   const [message, setMessage] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [success, setSuccess] = useState("");
 
   const submitAppointment = async (e) => {
     e.preventDefault();
-    console.log("🔥 SUBMIT CLICKED");
+    setSuccess("");
 
     try {
-      const res = await fetch("https://vital-vibes-backend.onrender.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          date,
-          message
-        })
-      });
+      const res = await fetch(
+        "https://vital-vibes-backend.onrender.com/appointments",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ name, email, date, message })
+        }
+      );
 
-      console.log("🔥 RESPONSE STATUS:", res.status);
-      await res.json();
+      if (!res.ok) throw new Error();
 
-      setSubmitted(true);
       setName("");
       setEmail("");
       setDate("");
       setMessage("");
-    } catch (err) {
-      console.error("❌ FETCH ERROR:", err);
+      setSuccess("✅ Appointment submitted successfully!");
+    } catch {
+      setSuccess("❌ Failed to submit appointment");
     }
   };
 
   return (
     <div className="appointment">
-      {!submitted && (
-        <form className="appointment-form" onSubmit={submitAppointment}>
-          <input
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+      <form className="appointment-form" onSubmit={submitAppointment}>
+        <h2>Book Appointment</h2>
 
-          <input
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <input value={name} onChange={(e) => setName(e.target.value)} required />
+        <input value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+        <textarea value={message} onChange={(e) => setMessage(e.target.value)} />
 
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
+        <button type="submit">Submit</button>
 
-          <textarea
-            placeholder="Message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-
-          <button type="submit">Book Appointment</button>
-        </form>
-      )}
-
-      {submitted && (
-        <div className="confirmation-message">
-          <h3>✅ Appointment Submitted</h3>
-          <p>We will contact you soon.</p>
-        </div>
-      )}
+        {success && <p>{success}</p>}
+      </form>
     </div>
   );
 };
