@@ -4,7 +4,7 @@ const AppointmentTable = () => {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/appointments")
+    fetch("https://vital-vibes-backend.onrender.com")
       .then((res) => res.json())
       .then((data) => setAppointments(data));
   }, []);

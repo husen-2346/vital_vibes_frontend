@@ -15,7 +15,7 @@ const AdminLogin = () => {
     console.log("SENDING:", { username, password });
 
     try {
-      const res = await fetch("http://localhost:5000/admin/login", {
+      const res = await fetch("https://vital-vibes-backend.onrender.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

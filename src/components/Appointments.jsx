@@ -12,7 +12,7 @@ const Appointments = () => {
     console.log("🔥 SUBMIT CLICKED");
 
     try {
-      const res = await fetch("http://localhost:5000/appointments", {
+      const res = await fetch("https://vital-vibes-backend.onrender.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
