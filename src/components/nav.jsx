@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import logo from "../assets/vv_logo.png";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -10,7 +11,7 @@ const Nav = () => {
       <div className="container navbar-grid">
 
         <div className="logo">
-          <img src="src\assets\vv_logo.png" />
+          <img src={logo} alt="Vital Vibes Logo" />
         </div>
 
         <nav className={open ? "nav-menu active" : "nav-menu"}>
