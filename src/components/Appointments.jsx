@@ -36,6 +36,7 @@ const Appointments = () => {
   };
 
   return (
+    <section id="appointment">
     <div className="appointment">
       <form className="appointment-form" onSubmit={submitAppointment}>
         <h2>Book Appointment</h2>
@@ -75,6 +76,7 @@ const Appointments = () => {
         {success && <p>{success}</p>}
       </form>
     </div>
+    </section>
   );
 };
 
