@@ -18,7 +18,13 @@ const Treatments = () => {
 
               <h4>{item.title}</h4>
 
-              <button className="treatment-btn">
+               <button
+                className="treatment-btn"
+                onClick={() => {
+                  const section = document.getElementById("appointment");
+                  section?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
                 Get Appointment
               </button>
 
