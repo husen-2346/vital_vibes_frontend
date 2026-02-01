@@ -4,9 +4,9 @@ const doctors = [
   {
     name: "Dr. Siddiq Khan",
     degree: "BHMS",
-    experience: "1+ Years Experience",
+    experience: "2.5+ Years Experience",
     desc: "Specialist in chronic diseases, lifestyle disorders, and holistic homeopathic care.",
-    image: "https://images.unsplash.com/photo-1606813909027-1f4d1b1f1a0a?auto=format&fit=crop&w=400&q=80"
+    image: "./assets/doc.jpeg"
   },
   {
     name: "Dr. Aaliyafatima Maldar",
