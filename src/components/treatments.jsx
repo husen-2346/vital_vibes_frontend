@@ -32,9 +32,7 @@ const Treatments = () => {
           ))}
         </div>
 
-        <div className="show-more">
-          <button>Show More</button>
-        </div>
+        
 
       </div>
     </section>

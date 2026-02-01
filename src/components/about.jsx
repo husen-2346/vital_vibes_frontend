@@ -1,5 +1,5 @@
 import React from "react";
-import docImage from "../assets/doc.jpeg";
+import docImage from "../assets/doc2.jpeg";
 
 const doctors = [
   {
