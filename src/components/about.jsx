@@ -1,4 +1,5 @@
 import React from "react";
+import docImage from "./assets/doc.jpeg";
 
 const doctors = [
   {
@@ -6,7 +7,7 @@ const doctors = [
     degree: "BHMS",
     experience: "2.5+ Years Experience",
     desc: "Specialist in chronic diseases, lifestyle disorders, and holistic homeopathic care.",
-    image: "./assets/doc.jpeg"
+    image: docImage
   },
   {
     name: "Dr. Aaliyafatima Maldar",
