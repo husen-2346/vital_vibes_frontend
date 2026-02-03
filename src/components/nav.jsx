@@ -12,8 +12,11 @@ const Nav = () => {
 
         <div className="logo">
           <img src={logo} alt="Vital Vibes Logo" />
+           <div className="hero-text">
+          <h1>VITAL VIBES</h1>
         </div>
-
+        </div>
+       
         <nav className={open ? "nav-menu active" : "nav-menu"}>
           <ul>
             <li><a href="#">Home</a></li>

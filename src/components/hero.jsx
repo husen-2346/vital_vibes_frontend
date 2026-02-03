@@ -8,17 +8,17 @@ const Hero = () => {
 
         {/* Left Content */}
         <div className="hero-text">
-          <h1>VITAL VIBES</h1>
-          <p className="subtitle">HOMEO CLINIC</p>
+          {/* <h1>VITAL VIBES</h1>
+          <p className="subtitle">HOMEO CLINIC</p> */}
 
-          <div className="address">
+          {/* <div className="address">
             <span className="location-icon"><IoLocationSharp /></span>
             <p>
               20/6, 10th Cross Rd, Govindaraja Nagar Ward,<br />
               Amarajyothi Nagar, Vijayanagar, Bengaluru,<br />
               Karnataka 560040
             </p>
-          </div>
+          </div> */}
 
           <a href="#appointment" className="hero-btn">
             BOOK APPOINTMENT
